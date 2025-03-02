@@ -207,7 +207,7 @@ const Dashboard = () => {
               <h2 className="text-lg font-medium mb-4">Your Loyalty Status</h2>
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center text-white">
-                  <Crown size={24} />
+                  <Crown size={24} className="text-white" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm text-muted-foreground">Current Tier</p>
