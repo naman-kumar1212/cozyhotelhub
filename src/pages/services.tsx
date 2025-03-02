@@ -1,7 +1,6 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Utensils, Dumbbell, WifiIcon, Car, Tv, Bath, Wine, Coffee as CoffeeIcon, PoolIcon } from "lucide-react";
+import { Utensils, Dumbbell, WifiIcon, Car, Tv, Bath, Wine, Coffee as CoffeeIcon } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -24,6 +23,32 @@ const Coffee = (props) => (
     <line x1="6" x2="6" y1="2" y2="4" />
     <line x1="10" x2="10" y1="2" y2="4" />
     <line x1="14" x2="14" y1="2" y2="4" />
+  </svg>
+);
+
+// Pool icon component since PoolIcon doesn't exist in lucide-react
+const Pool = (props) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M2 12h20" />
+    <path d="M2 20h20" />
+    <path d="M6 8v4" />
+    <path d="M10 4v8" />
+    <path d="M14 4v8" />
+    <path d="M18 8v4" />
+    <path d="M4 16c0 1 .8 2 2 2s2-1 2-2-.8-2-2-2-2 1-2 2z" />
+    <path d="M14 16c0 1 .8 2 2 2s2-1 2-2-.8-2-2-2-2 1-2 2z" />
+    <path d="M8 14h8" />
   </svg>
 );
 
@@ -80,7 +105,7 @@ const services = {
       id: 3,
       name: "Indoor & Outdoor Pools",
       description: "Swim and relax in our temperature-controlled pools with dedicated kids' areas.",
-      icon: PoolIcon,
+      icon: Pool,
       hours: "7:00 AM - 9:00 PM",
       location: "Garden Area & Indoor Wellness Wing",
       image: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
