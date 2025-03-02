@@ -10,6 +10,8 @@ import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/login-page";
 import Dashboard from "./pages/dashboard";
 import RoomsPage from "./pages/rooms";
+import DiningPage from "./pages/dining";
+import EventsPage from "./pages/events";
 import ServicesPage from "./pages/services";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/rooms" element={<RoomsPage />} />
+            <Route path="/dining" element={<DiningPage />} />
+            <Route path="/events" element={<EventsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Utensils, Dumbbell, WifiIcon, Car, Tv, Bath, Wine, Coffee as CoffeeIcon } from "lucide-react";
+import { Utensils, Dumbbell, WifiIcon, Car, Tv, Bath, Wine } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
