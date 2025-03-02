@@ -1,9 +1,31 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Spa, Utensils, Glass, Dumbbell, SwimmingPool, WifiIcon, Car, Tv } from "lucide-react";
+import { Utensils, Dumbbell, WifiIcon, Car, Tv, Bath, Wine, Coffee as CoffeeIcon, PoolIcon } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+
+// Custom icon components
+const Coffee = (props) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+    <line x1="6" x2="6" y1="2" y2="4" />
+    <line x1="10" x2="10" y1="2" y2="4" />
+    <line x1="14" x2="14" y1="2" y2="4" />
+  </svg>
+);
 
 const services = {
   dining: [
@@ -20,7 +42,7 @@ const services = {
       id: 2,
       name: "Oceanview Bar",
       description: "Stylish bar offering handcrafted cocktails and panoramic views of the ocean.",
-      icon: Glass,
+      icon: Wine,
       hours: "12:00 PM - 1:00 AM",
       location: "Main Building, Top Floor",
       image: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -40,7 +62,7 @@ const services = {
       id: 1,
       name: "Tranquil Spa",
       description: "Rejuvenate with our range of therapeutic treatments and massages.",
-      icon: Spa,
+      icon: Bath,
       hours: "9:00 AM - 8:00 PM",
       location: "Wellness Wing, 2nd Floor",
       image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -58,7 +80,7 @@ const services = {
       id: 3,
       name: "Indoor & Outdoor Pools",
       description: "Swim and relax in our temperature-controlled pools with dedicated kids' areas.",
-      icon: SwimmingPool,
+      icon: PoolIcon,
       hours: "7:00 AM - 9:00 PM",
       location: "Garden Area & Indoor Wellness Wing",
       image: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -92,54 +114,6 @@ const services = {
     }
   ]
 };
-
-// Coffee icon component
-const Coffee = (props) => (
-  <svg
-    {...props}
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-    <line x1="6" x2="6" y1="2" y2="4" />
-    <line x1="10" x2="10" y1="2" y2="4" />
-    <line x1="14" x2="14" y1="2" y2="4" />
-  </svg>
-);
-
-// SwimmingPool icon component
-const SwimmingPool = (props) => (
-  <svg
-    {...props}
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M2 12h20" />
-    <path d="M2 20h20" />
-    <path d="M6 8v4" />
-    <path d="M10 4v8" />
-    <path d="M14 4v8" />
-    <path d="M18 8v4" />
-    <path d="M4 16c0 1 .8 2 2 2s2-1 2-2-.8-2-2-2-2 1-2 2z" />
-    <path d="M14 16c0 1 .8 2 2 2s2-1 2-2-.8-2-2-2-2 1-2 2z" />
-    <path d="M8 14h8" />
-  </svg>
-);
 
 const ServicesPage = () => {
   return (
@@ -178,7 +152,7 @@ const ServicesPage = () => {
                       <CardHeader className="pb-2">
                         <div className="flex items-center gap-2">
                           <div className="w-8 h-8 rounded-md bg-hotel-100 flex items-center justify-center text-hotel-800">
-                            <item.icon size={18} />
+                            <item.icon size={18} className="h-5 w-5" />
                           </div>
                           <CardTitle className="text-lg">{item.name}</CardTitle>
                         </div>
