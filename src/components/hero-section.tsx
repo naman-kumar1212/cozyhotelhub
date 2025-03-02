@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { ButtonTransition } from './ui/button-transition';
-import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight, Users, Search } from 'lucide-react';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 
 const heroSlides = [
   {
@@ -177,14 +179,20 @@ const HeroSection = () => {
 
       {/* Booking Form */}
       <div className="absolute bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-5xl px-4 md:px-6 transform translate-y-1/2">
-        <div className="glass-morphism p-4 md:p-6 rounded-xl shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="glass-morphism p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-t-hotel-800">
+          <div className="mb-4">
+            <h3 className="text-lg md:text-xl font-medium text-hotel-800 mb-1">Check Availability</h3>
+            <p className="text-sm text-muted-foreground">Find your perfect room for your stay</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Check-in Date</label>
+              <Label htmlFor="check-in" className="text-sm font-medium text-hotel-700">Check-in Date</Label>
               <div className="relative">
-                <input 
+                <Input 
+                  id="check-in"
                   type="date" 
-                  className="w-full p-2 border rounded-md pl-10"
+                  className="w-full pl-10 border-hotel-200 focus-visible:ring-hotel-400"
                   placeholder="Check-in Date"
                 />
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
@@ -192,11 +200,12 @@ const HeroSection = () => {
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Check-out Date</label>
+              <Label htmlFor="check-out" className="text-sm font-medium text-hotel-700">Check-out Date</Label>
               <div className="relative">
-                <input 
+                <Input 
+                  id="check-out"
                   type="date" 
-                  className="w-full p-2 border rounded-md pl-10"
+                  className="w-full pl-10 border-hotel-200 focus-visible:ring-hotel-400"
                   placeholder="Check-out Date"
                 />
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
@@ -204,18 +213,25 @@ const HeroSection = () => {
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Guests</label>
-              <select className="w-full p-2 border rounded-md">
-                <option>1 Adult</option>
-                <option>2 Adults</option>
-                <option>2 Adults, 1 Child</option>
-                <option>2 Adults, 2 Children</option>
-              </select>
+              <Label htmlFor="guests" className="text-sm font-medium text-hotel-700">Guests</Label>
+              <div className="relative">
+                <select 
+                  id="guests"
+                  className="flex h-10 w-full rounded-md border border-hotel-200 bg-background px-3 py-2 pl-10 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hotel-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                >
+                  <option>1 Adult</option>
+                  <option>2 Adults</option>
+                  <option>2 Adults, 1 Child</option>
+                  <option>2 Adults, 2 Children</option>
+                </select>
+                <Users className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
+              </div>
             </div>
             
             <div className="space-y-2 flex items-end">
-              <ButtonTransition className="w-full bg-hotel-800 text-white hover:bg-hotel-900">
-                Check Availability
+              <ButtonTransition className="w-full bg-hotel-800 text-white hover:bg-hotel-900 h-10 gap-2 group">
+                <Search size={18} className="group-hover:translate-x-1 transition-transform" />
+                <span>Check Availability</span>
               </ButtonTransition>
             </div>
           </div>

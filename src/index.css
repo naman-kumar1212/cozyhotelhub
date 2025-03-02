@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,7 +46,7 @@
   }
 
   .glass-morphism {
-    @apply backdrop-blur-lg bg-white/95 border border-white/40 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)];
+    @apply backdrop-blur-lg bg-white/95 border border-white/40 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.15)] transition-all duration-300;
   }
 }
 
@@ -65,7 +64,6 @@
   }
 }
 
-/* Remove App.css default styles that might interfere with our layout */
 #root {
   max-width: none;
   margin: 0;
