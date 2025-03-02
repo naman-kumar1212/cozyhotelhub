@@ -16,10 +16,15 @@ const navLinks = [
   { name: 'Contact', path: '/contact' },
 ];
 
+// Pages that have light backgrounds and need dark text
+const darkTextPages = ['/rooms', '/contact', '/services', '/about', '/dining', '/events'];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  
+  const isDarkTextPage = darkTextPages.includes(location.pathname);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -45,7 +50,9 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Logo textClassName={cn(isScrolled ? "text-foreground" : "text-white")} />
+        <Logo textClassName={cn(
+          isScrolled ? "text-foreground" : isDarkTextPage ? "text-foreground" : "text-white"
+        )} />
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 items-center">
@@ -56,7 +63,11 @@ const Navbar = () => {
               className={cn(
                 "relative font-medium text-sm whitespace-nowrap transition-colors duration-200 hover:text-hotel-800",
                 "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-hotel-800 after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
-                isScrolled ? "text-foreground" : "text-white",
+                isScrolled 
+                  ? "text-foreground" 
+                  : isDarkTextPage 
+                    ? "text-foreground" 
+                    : "text-white",
                 location.pathname === link.path && "after:scale-x-100 after:origin-bottom-left text-hotel-800"
               )}
             >
