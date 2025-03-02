@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -67,7 +66,6 @@ const HeroSection = () => {
   }, [currentSlide, isAnimating]);
 
   useEffect(() => {
-    // Preload images to prevent flickering
     const preloadImages = async () => {
       try {
         await Promise.all(
@@ -142,8 +140,8 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* Navigation */}
-      <div className="absolute bottom-12 left-0 right-0 z-30 flex justify-center space-x-3">
+      {/* Navigation indicators */}
+      <div className="absolute bottom-32 left-0 right-0 z-30 flex justify-center space-x-3">
         {heroSlides.map((_, index) => (
           <button
             key={index}
@@ -160,7 +158,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Arrows */}
+      {/* Arrow navigation */}
       <button
         className="absolute left-4 top-1/2 z-30 -translate-y-1/2 bg-black/20 backdrop-blur-sm hover:bg-black/40 p-2 rounded-full text-white/90 hover:text-white transition-all duration-300"
         onClick={prevSlide}
@@ -178,8 +176,8 @@ const HeroSection = () => {
       </button>
 
       {/* Booking Form */}
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-30 w-full max-w-5xl px-4 md:px-0">
-        <div className="glass-morphism p-4 rounded-xl shadow-lg">
+      <div className="absolute bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-5xl px-4 md:px-6 transform translate-y-1/2">
+        <div className="glass-morphism p-4 md:p-6 rounded-xl shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">Check-in Date</label>

@@ -43,10 +43,11 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    scroll-behavior: smooth;
   }
 
   .glass-morphism {
-    @apply backdrop-blur-lg bg-white/90 border border-white/40 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)];
+    @apply backdrop-blur-lg bg-white/95 border border-white/40 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)];
   }
 }
 
@@ -62,4 +63,12 @@
   .animation-delay-400 {
     animation-delay: 400ms;
   }
+}
+
+/* Remove App.css default styles that might interfere with our layout */
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }

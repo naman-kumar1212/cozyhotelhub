@@ -71,14 +71,16 @@ const ServicesSection = () => {
   return (
     <section className="py-20 bg-hotel-50/50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-light mb-2">Our Services</h2>
+        <div className="text-center mb-16">
+          <p className="text-hotel-800 mb-2 font-medium">Our Offerings</p>
+          <h2 className="text-3xl md:text-4xl font-light mb-4">Exceptional Services</h2>
+          <div className="w-20 h-1 bg-hotel-300 mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Experience premium amenities and exceptional services designed to make your stay memorable
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <ServiceCard key={service.id} {...service} index={index} />
           ))}
