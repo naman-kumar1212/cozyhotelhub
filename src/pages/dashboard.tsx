@@ -369,7 +369,7 @@ const Crown = ({ size, className }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className={className}
+    className={className || ""}
   >
     <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14" />
   </svg>
