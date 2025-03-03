@@ -57,22 +57,22 @@ const Footer = () => {
             <h3 className="font-medium text-lg mb-4">Our Services</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/rooms/luxury" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Luxury Suites</Link>
+                <Link to="/rooms" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Luxury Suites</Link>
               </li>
               <li>
-                <Link to="/dining/restaurant" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Fine Dining</Link>
+                <Link to="/dining" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Fine Dining</Link>
               </li>
               <li>
-                <Link to="/events/conference" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Conference Halls</Link>
+                <Link to="/events" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Conference Halls</Link>
               </li>
               <li>
-                <Link to="/events/wedding" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Wedding Venues</Link>
+                <Link to="/events" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Wedding Venues</Link>
               </li>
               <li>
-                <Link to="/services/spa" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Spa & Wellness</Link>
+                <Link to="/services" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Spa & Wellness</Link>
               </li>
               <li>
-                <Link to="/services/concierge" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Concierge Services</Link>
+                <Link to="/services" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">Concierge Services</Link>
               </li>
             </ul>
           </div>
@@ -101,13 +101,13 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} CozyHotelHub. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">
+            <Link to="/about" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">
+            <Link to="/about" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">
               Terms of Service
             </Link>
-            <Link to="/sitemap" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">
+            <Link to="/about" className="text-muted-foreground hover:text-hotel-800 transition-colors text-sm">
               Sitemap
             </Link>
           </div>
