@@ -38,7 +38,7 @@ const LoginPage = () => {
     if (isLogin) {
       const success = await login(formData.email, formData.password);
       if (success) {
-        navigate('/dashboard');
+        navigate('/'); // Changed from /dashboard to / (index page)
       }
     } else {
       if (!formData.name) {
@@ -48,7 +48,7 @@ const LoginPage = () => {
       
       const success = await register(formData.name, formData.email, formData.password);
       if (success) {
-        navigate('/dashboard');
+        navigate('/'); // Changed from /dashboard to / (index page)
       }
     }
   };

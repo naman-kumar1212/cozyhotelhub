@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/"); // Changed from /login to / (index page)
   };
 
   if (!user) {
