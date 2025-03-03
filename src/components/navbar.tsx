@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/logo';
 import { ButtonTransition } from '@/components/ui/button-transition';
+import { useAuth } from '@/context/auth-context';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -23,6 +24,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, user, logout } = useAuth();
   
   const isDarkTextPage = darkTextPages.includes(location.pathname);
 
@@ -75,9 +77,17 @@ const Navbar = () => {
             </Link>
           ))}
           
-          <ButtonTransition size="sm">
-            <Link to="/login">Sign In</Link>
-          </ButtonTransition>
+          {isAuthenticated ? (
+            <ButtonTransition size="sm" onClick={logout}>
+              Sign Out
+            </ButtonTransition>
+          ) : (
+            <Link to="/login">
+              <ButtonTransition size="sm">
+                Sign In
+              </ButtonTransition>
+            </Link>
+          )}
         </nav>
         
         {/* Mobile Menu Button */}
@@ -110,9 +120,17 @@ const Navbar = () => {
             </Link>
           ))}
           
-          <ButtonTransition className="mt-4 w-full">
-            <Link to="/login" className="w-full">Sign In</Link>
-          </ButtonTransition>
+          {isAuthenticated ? (
+            <ButtonTransition className="mt-4 w-full" onClick={logout}>
+              Sign Out
+            </ButtonTransition>
+          ) : (
+            <Link to="/login" className="w-full">
+              <ButtonTransition className="mt-4 w-full">
+                Sign In
+              </ButtonTransition>
+            </Link>
+          )}
         </nav>
       </div>
     </header>
