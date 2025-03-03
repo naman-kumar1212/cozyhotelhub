@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -177,8 +178,8 @@ const HeroSection = () => {
         <ChevronRight size={24} />
       </button>
 
-      {/* Booking Form */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-5xl px-4 md:px-6 transform translate-y-1/2">
+      {/* Booking Form - Adjusted position to be visible */}
+      <div className="absolute bottom-6 left-0 right-0 z-30 mx-auto w-full max-w-5xl px-4 md:px-6">
         <div className="glass-morphism p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-t-hotel-800">
           <div className="mb-4">
             <h3 className="text-lg md:text-xl font-medium text-hotel-800 mb-1">Check Availability</h3>
