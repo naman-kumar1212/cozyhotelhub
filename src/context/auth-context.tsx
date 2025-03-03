@@ -45,6 +45,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Mock API call - replace with actual API call in production
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Check if credentials exist in localStorage
+      const savedCredentials = localStorage.getItem('userCredentials');
+      let credentials = savedCredentials ? JSON.parse(savedCredentials) : {};
+      
       // Demo login logic - replace with actual authentication
       if (email === 'demo@example.com' && password === 'password') {
         const user = {
@@ -69,6 +73,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(user);
         localStorage.setItem('hotelUser', JSON.stringify(user));
         toast.success('Admin login successful!');
+        return true;
+      } else if (credentials[email] && credentials[email].password === password) {
+        // User exists in our saved credentials
+        const user = {
+          id: credentials[email].id,
+          name: credentials[email].name,
+          email: email,
+          role: 'guest' as const,
+          reservations: []
+        };
+        setUser(user);
+        localStorage.setItem('hotelUser', JSON.stringify(user));
+        toast.success('Login successful!');
         return true;
       } else {
         toast.error('Invalid email or password.');
@@ -95,14 +112,36 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Mock API call - replace with actual API call in production
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Demo registration logic - replace with actual registration
+      // Check if the email already exists in our credentials store
+      const savedCredentials = localStorage.getItem('userCredentials');
+      let credentials = savedCredentials ? JSON.parse(savedCredentials) : {};
+      
+      if (credentials[email]) {
+        toast.error('Email already exists. Please use a different email or try logging in.');
+        return false;
+      }
+      
+      // Generate a unique ID for the new user
+      const userId = Math.random().toString(36).substr(2, 9);
+      
+      // Save the user credentials
+      credentials[email] = {
+        id: userId,
+        name: name,
+        password: password
+      };
+      
+      localStorage.setItem('userCredentials', JSON.stringify(credentials));
+      
+      // Create the user object and log them in
       const user = {
-        id: Math.random().toString(36).substr(2, 9),
+        id: userId,
         name,
         email,
         role: 'guest' as const,
         reservations: []
       };
+      
       setUser(user);
       localStorage.setItem('hotelUser', JSON.stringify(user));
       toast.success('Registration successful!');
