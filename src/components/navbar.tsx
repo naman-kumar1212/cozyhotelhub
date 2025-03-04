@@ -63,14 +63,15 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={cn(
-                "relative font-medium text-sm whitespace-nowrap transition-colors duration-200 hover:text-hotel-800",
-                "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-hotel-800 after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
-                isScrolled 
-                  ? "text-foreground" 
-                  : isDarkTextPage 
-                    ? "text-foreground" 
-                    : "text-white",
-                location.pathname === link.path && "after:scale-x-100 after:origin-bottom-left text-hotel-800"
+                "relative font-medium text-sm whitespace-nowrap transition-colors duration-200",
+                (isScrolled || isDarkTextPage) 
+                  ? "text-hotel-800 hover:text-hotel-950" 
+                  : "text-white hover:text-hotel-100",
+                location.pathname === link.path && (
+                  (isScrolled || isDarkTextPage) ? "text-hotel-950 font-semibold" : "text-white font-semibold"
+                ),
+                "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
+                location.pathname === link.path && "after:scale-x-100 after:origin-bottom-left"
               )}
             >
               {link.name}
@@ -92,7 +93,10 @@ const Navbar = () => {
         
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-foreground p-2 focus:outline-none"
+          className={cn(
+            "md:hidden p-2 focus:outline-none",
+            isScrolled || isDarkTextPage ? "text-hotel-800" : "text-white"
+          )}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -111,8 +115,8 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={cn(
-                "text-foreground text-lg font-medium py-2 border-b border-muted transition-colors",
-                location.pathname === link.path && "text-hotel-800"
+                "text-hotel-800 text-lg font-medium py-2 border-b border-muted transition-colors hover:text-hotel-950",
+                location.pathname === link.path && "text-hotel-950 font-semibold"
               )}
               onClick={closeMenu}
             >
