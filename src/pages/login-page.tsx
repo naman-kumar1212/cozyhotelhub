@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
@@ -38,7 +37,7 @@ const LoginPage = () => {
     if (isLogin) {
       const success = await login(formData.email, formData.password);
       if (success) {
-        navigate('/'); // Changed from /dashboard to / (index page)
+        navigate('/dashboard');
       }
     } else {
       if (!formData.name) {
@@ -48,14 +47,13 @@ const LoginPage = () => {
       
       const success = await register(formData.name, formData.email, formData.password);
       if (success) {
-        navigate('/'); // Changed from /dashboard to / (index page)
+        navigate('/dashboard');
       }
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
-      {/* Left Section: Image */}
       <div 
         className="hidden md:block md:w-1/2 bg-cover bg-center"
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80)' }}
@@ -75,7 +73,6 @@ const LoginPage = () => {
         </div>
       </div>
       
-      {/* Right Section: Form */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 bg-white">
         <div className="w-full max-w-md">
           <div className="mb-8 text-center md:text-left">
@@ -178,7 +175,6 @@ const LoginPage = () => {
             </div>
           </form>
           
-          {/* Demo credentials */}
           {isLogin && (
             <div className="mt-6 p-4 bg-muted rounded-md text-sm">
               <p className="font-medium mb-2">Demo Credentials:</p>
