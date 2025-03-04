@@ -1,11 +1,12 @@
 
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { ButtonTransition } from './ui/button-transition';
-import { Calendar, ChevronLeft, ChevronRight, Users, Search } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight, Users, Search, LayoutDashboard } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
+import { useAuth } from '@/context/auth-context';
 
 const heroSlides = [
   {
@@ -39,6 +40,7 @@ const HeroSection = () => {
   const [loading, setLoading] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   const nextSlide = () => {
     if (isAnimating) return;
@@ -250,6 +252,20 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Dashboard Quick Access Icon - Moved to right side under check availability */}
+      {isAuthenticated && (
+        <Link
+          to="/dashboard"
+          className={cn(
+            "fixed bottom-6 right-6 z-40 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
+            "bg-hotel-800 text-white hover:bg-hotel-900 luxury-shadow",
+          )}
+          aria-label="Dashboard"
+        >
+          <LayoutDashboard size={24} />
+        </Link>
+      )}
     </section>
   );
 };

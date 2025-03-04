@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, LayoutDashboard } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/logo';
 import { ButtonTransition } from '@/components/ui/button-transition';
@@ -137,20 +137,6 @@ const Navbar = () => {
           )}
         </nav>
       </div>
-
-      {/* Dashboard Quick Access Icon */}
-      {isAuthenticated && (
-        <Link
-          to="/dashboard"
-          className={cn(
-            "fixed bottom-6 left-6 z-40 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
-            "bg-hotel-800 text-white hover:bg-hotel-900 luxury-shadow",
-          )}
-          aria-label="Dashboard"
-        >
-          <LayoutDashboard size={24} />
-        </Link>
-      )}
     </header>
   );
 };
