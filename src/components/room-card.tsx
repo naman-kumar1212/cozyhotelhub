@@ -35,7 +35,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   return (
     <div 
       className={cn(
-        "bg-white border border-hotel-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300",
+        "bg-white border border-hotel-200 rounded-lg overflow-hidden luxury-shadow hover:shadow-lg transition-all duration-500",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -50,19 +50,21 @@ const RoomCard: React.FC<RoomCardProps> = ({
             isHovered ? "scale-110" : "scale-100"
           )}
         />
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-hotel-800">
+        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-hotel-800 border border-hotel-200">
           {type}
         </div>
       </div>
       
       <div className="p-6">
         <div className="flex justify-between items-start mb-2">
-          <h3 className="text-xl font-medium">{name}</h3>
+          <h3 className="text-xl font-medium text-hotel-900">{name}</h3>
           <div className="text-right">
             <span className="text-xl font-medium text-hotel-800">${price}</span>
             <span className="text-sm text-muted-foreground"> / night</span>
           </div>
         </div>
+        
+        <div className="w-12 h-0.5 bg-hotel-300 rounded-full mb-3"></div>
         
         <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
           {description}
@@ -100,7 +102,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
           
           <ButtonTransition 
             size="sm" 
-            className="flex-1 bg-hotel-800 text-white hover:bg-hotel-900"
+            className="flex-1 luxury-button"
           >
             <Link to={`/booking/${id}`} className="w-full">
               Book Now

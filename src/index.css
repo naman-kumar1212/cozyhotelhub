@@ -1,36 +1,37 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 30 33% 98%;
-    --foreground: 40 6% 15%;
+    --background: 40 30% 97%;
+    --foreground: 35 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 40 6% 15%;
+    --card-foreground: 35 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 40 6% 15%;
+    --popover-foreground: 35 20% 15%;
 
-    --primary: 41 38% 92%;
-    --primary-foreground: 40 6% 15%;
+    --primary: 32 40% 75%;
+    --primary-foreground: 35 20% 15%;
 
-    --secondary: 40 6% 90%;
-    --secondary-foreground: 40 6% 15%;
+    --secondary: 35 20% 93%;
+    --secondary-foreground: 35 20% 15%;
 
-    --muted: 40 6% 95%;
-    --muted-foreground: 40 6% 35%;
+    --muted: 35 20% 95%;
+    --muted-foreground: 35 20% 40%;
 
-    --accent: 41 38% 92%;
-    --accent-foreground: 40 6% 15%;
+    --accent: 32 40% 75%;
+    --accent-foreground: 35 20% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 6% 98%;
+    --destructive-foreground: 35 20% 98%;
 
-    --border: 40 6% 90%;
-    --input: 40 6% 90%;
-    --ring: 41 38% 80%;
+    --border: 35 20% 90%;
+    --input: 35 20% 90%;
+    --ring: 32 40% 70%;
 
     --radius: 0.5rem;
   }
@@ -46,7 +47,23 @@
   }
 
   .glass-morphism {
-    @apply backdrop-blur-lg bg-white/95 border border-white/40 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.15)] transition-all duration-300;
+    @apply backdrop-blur-lg bg-white/95 border border-white/60 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.15)] transition-all duration-300;
+  }
+  
+  .luxury-shadow {
+    @apply shadow-[0_10px_40px_-10px_rgba(191,162,114,0.3)];
+  }
+  
+  .luxury-card {
+    @apply border border-hotel-200 bg-white rounded-lg overflow-hidden luxury-shadow hover:shadow-[0_15px_50px_-12px_rgba(191,162,114,0.4)] transition-all duration-500;
+  }
+  
+  .luxury-button {
+    @apply bg-gradient-to-r from-hotel-400 to-hotel-500 hover:from-hotel-500 hover:to-hotel-600 text-white transition-all duration-300;
+  }
+  
+  .luxury-border {
+    @apply border-b-2 border-hotel-300;
   }
 }
 

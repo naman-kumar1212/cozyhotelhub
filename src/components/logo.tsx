@@ -37,11 +37,11 @@ const Logo: React.FC<LogoProps> = ({
       )}
     >
       <div className={cn(
-        "relative flex items-center justify-center overflow-hidden rounded-md bg-hotel-800", 
+        "relative flex items-center justify-center overflow-hidden rounded-md", 
         sizeClasses[size]
       )}>
-        <span className="absolute inset-0 bg-gradient-to-br from-hotel-700 to-hotel-900"></span>
-        <span className="relative text-primary font-semibold">C</span>
+        <span className="absolute inset-0 bg-gradient-to-br from-hotel-400 to-hotel-700"></span>
+        <span className="relative text-white font-semibold">C</span>
       </div>
       
       {!hideText && (
@@ -50,7 +50,7 @@ const Logo: React.FC<LogoProps> = ({
           textSizeClasses[size],
           textClassName
         )}>
-          Cozy<span className="font-light">HotelHub</span>
+          Cozy<span className="font-light text-hotel-600">HotelHub</span>
         </span>
       )}
     </Link>

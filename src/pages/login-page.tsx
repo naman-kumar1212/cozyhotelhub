@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
@@ -56,28 +57,28 @@ const LoginPage = () => {
     <div className="min-h-screen flex flex-col md:flex-row">
       <div 
         className="hidden md:block md:w-1/2 bg-cover bg-center"
-        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80)' }}
+        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80)' }}
       >
-        <div className="h-full w-full bg-black/30 flex items-center justify-center p-12">
+        <div className="h-full w-full bg-black/40 flex items-center justify-center p-12">
           <div className="text-white max-w-md">
-            <h1 className="text-4xl font-light mb-4">Welcome to CozyHotelHub</h1>
+            <h1 className="text-4xl font-light mb-4">Welcome to <span className="font-medium text-hotel-300">CozyHotelHub</span></h1>
             <p className="mb-6">
               Experience luxury and comfort like never before. 
               {isLogin ? 'Sign in to your account to access exclusive benefits and manage your bookings.' : 'Join us to enjoy exclusive benefits and a seamless booking experience.'}
             </p>
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-1 bg-white/60 rounded-full"></div>
-              <span className="text-white/80 text-sm">Luxury Redefined</span>
+              <div className="w-12 h-0.5 bg-hotel-300 rounded-full"></div>
+              <span className="text-hotel-100 text-sm">Luxury Redefined</span>
             </div>
           </div>
         </div>
       </div>
       
-      <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 bg-white">
+      <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 bg-gradient-to-b from-white to-hotel-50">
         <div className="w-full max-w-md">
           <div className="mb-8 text-center md:text-left">
             <Logo className="mx-auto md:mx-0 mb-6" />
-            <h2 className="text-2xl font-medium mb-2">
+            <h2 className="text-2xl font-medium mb-2 text-hotel-900">
               {isLogin ? 'Sign in to your account' : 'Create an account'}
             </h2>
             <p className="text-muted-foreground">
@@ -88,7 +89,7 @@ const LoginPage = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {!isLogin && (
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-hotel-800">
                   Full Name
                 </label>
                 <input
@@ -97,7 +98,7 @@ const LoginPage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-hotel-200 rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-500"
+                  className="w-full px-4 py-3 border border-hotel-200 rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-500 bg-white/80"
                   placeholder="John Doe"
                   required
                 />
@@ -105,7 +106,7 @@ const LoginPage = () => {
             )}
             
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
+              <label htmlFor="email" className="block text-sm font-medium mb-2 text-hotel-800">
                 Email Address
               </label>
               <input
@@ -114,14 +115,14 @@ const LoginPage = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-hotel-200 rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-500"
+                className="w-full px-4 py-3 border border-hotel-200 rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-500 bg-white/80"
                 placeholder="you@example.com"
                 required
               />
             </div>
             
             <div>
-              <label htmlFor="password" className="block text-sm font-medium mb-2">
+              <label htmlFor="password" className="block text-sm font-medium mb-2 text-hotel-800">
                 Password
               </label>
               <div className="relative">
@@ -131,7 +132,7 @@ const LoginPage = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-hotel-200 rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-500"
+                  className="w-full px-4 py-3 border border-hotel-200 rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-500 bg-white/80"
                   placeholder="••••••••"
                   required
                 />
@@ -155,7 +156,7 @@ const LoginPage = () => {
             
             <ButtonTransition
               type="submit"
-              className="w-full py-3 bg-hotel-800 text-white hover:bg-hotel-900"
+              className="w-full py-3 bg-hotel-800 text-white hover:bg-hotel-900 luxury-button"
               disabled={isLoading}
             >
               {isLoading ? 'Processing...' : isLogin ? 'Sign In' : 'Create Account'}
@@ -176,8 +177,8 @@ const LoginPage = () => {
           </form>
           
           {isLogin && (
-            <div className="mt-6 p-4 bg-muted rounded-md text-sm">
-              <p className="font-medium mb-2">Demo Credentials:</p>
+            <div className="mt-6 p-4 bg-muted rounded-md text-sm border border-hotel-200 luxury-shadow">
+              <p className="font-medium mb-2 text-hotel-800">Demo Credentials:</p>
               <p>Email: demo@example.com</p>
               <p>Password: password</p>
               <p className="mt-2">Admin: admin@example.com / admin</p>

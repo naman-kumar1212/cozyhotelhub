@@ -3,7 +3,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 export interface ButtonTransitionProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "outline" | "ghost"
+  variant?: "default" | "outline" | "ghost" | "luxury"
   size?: "default" | "sm" | "lg" | "icon"
 }
 
@@ -19,6 +19,7 @@ const ButtonTransition = React.forwardRef<HTMLButtonElement, ButtonTransitionPro
             "bg-primary text-primary-foreground shadow-sm": variant === "default",
             "border border-input bg-background hover:bg-accent hover:text-accent-foreground": variant === "outline",
             "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
+            "bg-gradient-to-r from-hotel-400 to-hotel-500 hover:from-hotel-500 hover:to-hotel-600 text-white shadow-sm": variant === "luxury",
             "h-10 px-4 py-2": size === "default",
             "h-9 rounded-md px-3": size === "sm",
             "h-11 rounded-md px-8": size === "lg",
