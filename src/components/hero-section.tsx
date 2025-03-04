@@ -121,7 +121,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
           
-          <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-4">
+          <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-4 -mt-24">
             <div className={cn(
               "text-center transform transition-all duration-700",
               index === currentSlide ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
@@ -144,7 +144,7 @@ const HeroSection = () => {
       ))}
 
       {/* Navigation indicators */}
-      <div className="absolute bottom-32 left-0 right-0 z-30 flex justify-center space-x-3">
+      <div className="absolute bottom-36 left-0 right-0 z-30 flex justify-center space-x-3">
         {heroSlides.map((_, index) => (
           <button
             key={index}
@@ -178,12 +178,24 @@ const HeroSection = () => {
         <ChevronRight size={24} />
       </button>
 
-      {/* Booking Form - Adjusted position to be visible */}
-      <div className="absolute bottom-6 left-0 right-0 z-30 mx-auto w-full max-w-5xl px-4 md:px-6">
-        <div className="glass-morphism p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-t-hotel-800">
-          <div className="mb-4">
-            <h3 className="text-lg md:text-xl font-medium text-hotel-800 mb-1">Check Availability</h3>
+      {/* Booking Form - Increased size and added search bar */}
+      <div className="absolute bottom-6 left-0 right-0 z-30 mx-auto w-full max-w-6xl px-4 md:px-6">
+        <div className="glass-morphism p-6 md:p-10 rounded-xl shadow-lg border-t-4 border-t-hotel-800">
+          <div className="mb-6">
+            <h3 className="text-xl md:text-2xl font-medium text-hotel-800 mb-2">Check Availability</h3>
             <p className="text-sm text-muted-foreground">Find your perfect room for your stay</p>
+          </div>
+          
+          {/* Search Bar */}
+          <div className="mb-6">
+            <div className="relative">
+              <Input 
+                type="text" 
+                placeholder="Search for rooms, amenities, or preferences..." 
+                className="w-full pl-10 pr-4 py-3 text-base border-hotel-200 focus-visible:ring-hotel-400"
+              />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -193,7 +205,7 @@ const HeroSection = () => {
                 <Input 
                   id="check-in"
                   type="date" 
-                  className="w-full pl-10 border-hotel-200 focus-visible:ring-hotel-400"
+                  className="w-full pl-10 border-hotel-200 focus-visible:ring-hotel-400 py-6"
                   placeholder="Check-in Date"
                 />
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
@@ -206,7 +218,7 @@ const HeroSection = () => {
                 <Input 
                   id="check-out"
                   type="date" 
-                  className="w-full pl-10 border-hotel-200 focus-visible:ring-hotel-400"
+                  className="w-full pl-10 border-hotel-200 focus-visible:ring-hotel-400 py-6"
                   placeholder="Check-out Date"
                 />
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
@@ -218,7 +230,7 @@ const HeroSection = () => {
               <div className="relative">
                 <select 
                   id="guests"
-                  className="flex h-10 w-full rounded-md border border-hotel-200 bg-background px-3 py-2 pl-10 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hotel-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                  className="flex h-14 w-full rounded-md border border-hotel-200 bg-background px-3 py-2 pl-10 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hotel-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                 >
                   <option>1 Adult</option>
                   <option>2 Adults</option>
@@ -230,7 +242,7 @@ const HeroSection = () => {
             </div>
             
             <div className="space-y-2 flex items-end">
-              <ButtonTransition className="w-full bg-hotel-800 text-white hover:bg-hotel-900 h-10 gap-2 group">
+              <ButtonTransition className="w-full bg-hotel-800 text-white hover:bg-hotel-900 h-14 gap-2 group text-base">
                 <Search size={18} className="group-hover:translate-x-1 transition-transform" />
                 <span>Check Availability</span>
               </ButtonTransition>
