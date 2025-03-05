@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/logo';
 import { ButtonTransition } from '@/components/ui/button-transition';
@@ -79,16 +79,9 @@ const Navbar = () => {
           ))}
           
           {isAuthenticated ? (
-            <>
-              <Link to="/dashboard" className="mr-2">
-                <ButtonTransition size="sm" variant="outline" className="flex items-center gap-1">
-                  <LayoutDashboard size={16} /> Dashboard
-                </ButtonTransition>
-              </Link>
-              <ButtonTransition size="sm" onClick={logout}>
-                Sign Out
-              </ButtonTransition>
-            </>
+            <ButtonTransition size="sm" onClick={logout}>
+              Sign Out
+            </ButtonTransition>
           ) : (
             <Link to="/login">
               <ButtonTransition size="sm">
@@ -138,7 +131,7 @@ const Navbar = () => {
                 className="text-hotel-800 text-lg font-medium py-2 border-b border-muted transition-colors hover:text-hotel-950 flex items-center"
                 onClick={closeMenu}
               >
-                <LayoutDashboard size={18} className="mr-2" /> Dashboard
+                <Home size={18} className="mr-2" /> Dashboard
               </Link>
               <ButtonTransition className="mt-4 w-full" onClick={logout}>
                 Sign Out
@@ -164,7 +157,7 @@ const Navbar = () => {
           )}
           aria-label="Dashboard"
         >
-          <LayoutDashboard size={24} />
+          <Home size={24} />
         </Link>
       )}
     </header>
