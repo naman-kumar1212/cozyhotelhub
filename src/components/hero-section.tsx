@@ -145,6 +145,26 @@ const HeroSection = () => {
         </div>
       ))}
 
+      {/* Global Search Bar - Added above check availability with translucent bg */}
+      <div className="absolute bottom-40 left-0 right-0 z-30 mx-auto w-full max-w-2xl px-4">
+        <div className="bg-black/30 backdrop-blur-md rounded-full overflow-hidden border border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
+          <div className="flex items-center">
+            <Search className="ml-6 text-white/90" size={20} />
+            <span className="text-white/90 mx-3 text-lg font-light">Search</span>
+            <div className="flex-1">
+              <Input 
+                type="text" 
+                placeholder="Rooms, amenities, or experiences..." 
+                className="border-0 bg-transparent text-white placeholder:text-white/60 focus-visible:ring-0 focus-visible:ring-offset-0 h-14"
+              />
+            </div>
+            <ButtonTransition className="rounded-full m-1 bg-hotel-800 hover:bg-hotel-900">
+              <Search size={20} />
+            </ButtonTransition>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation indicators */}
       <div className="absolute bottom-36 left-0 right-0 z-30 flex justify-center space-x-3">
         {heroSlides.map((_, index) => (
@@ -180,24 +200,12 @@ const HeroSection = () => {
         <ChevronRight size={24} />
       </button>
 
-      {/* Booking Form - Increased size and added search bar */}
+      {/* Booking Form */}
       <div className="absolute bottom-6 left-0 right-0 z-30 mx-auto w-full max-w-6xl px-4 md:px-6">
         <div className="glass-morphism p-6 md:p-10 rounded-xl shadow-lg border-t-4 border-t-hotel-800">
           <div className="mb-6">
             <h3 className="text-xl md:text-2xl font-medium text-hotel-800 mb-2">Check Availability</h3>
             <p className="text-sm text-muted-foreground">Find your perfect room for your stay</p>
-          </div>
-          
-          {/* Search Bar */}
-          <div className="mb-6">
-            <div className="relative">
-              <Input 
-                type="text" 
-                placeholder="Search for rooms, amenities, or preferences..." 
-                className="w-full pl-10 pr-4 py-3 text-base border-hotel-200 focus-visible:ring-hotel-400"
-              />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-hotel-400" size={18} />
-            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
