@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LayoutDashboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/logo';
 import { ButtonTransition } from '@/components/ui/button-transition';
@@ -79,9 +79,16 @@ const Navbar = () => {
           ))}
           
           {isAuthenticated ? (
-            <ButtonTransition size="sm" onClick={logout}>
-              Sign Out
-            </ButtonTransition>
+            <>
+              <Link to="/dashboard" className="mr-2">
+                <ButtonTransition size="sm" variant="outline" className="flex items-center gap-1">
+                  <LayoutDashboard size={16} /> Dashboard
+                </ButtonTransition>
+              </Link>
+              <ButtonTransition size="sm" onClick={logout}>
+                Sign Out
+              </ButtonTransition>
+            </>
           ) : (
             <Link to="/login">
               <ButtonTransition size="sm">
@@ -125,9 +132,18 @@ const Navbar = () => {
           ))}
           
           {isAuthenticated ? (
-            <ButtonTransition className="mt-4 w-full" onClick={logout}>
-              Sign Out
-            </ButtonTransition>
+            <>
+              <Link 
+                to="/dashboard" 
+                className="text-hotel-800 text-lg font-medium py-2 border-b border-muted transition-colors hover:text-hotel-950 flex items-center"
+                onClick={closeMenu}
+              >
+                <LayoutDashboard size={18} className="mr-2" /> Dashboard
+              </Link>
+              <ButtonTransition className="mt-4 w-full" onClick={logout}>
+                Sign Out
+              </ButtonTransition>
+            </>
           ) : (
             <Link to="/login" className="w-full">
               <ButtonTransition className="mt-4 w-full">
@@ -137,6 +153,20 @@ const Navbar = () => {
           )}
         </nav>
       </div>
+      
+      {/* Dashboard Quick Access Icon for all pages */}
+      {isAuthenticated && !['/dashboard', '/'].includes(location.pathname) && (
+        <Link
+          to="/dashboard"
+          className={cn(
+            "fixed bottom-6 right-6 z-40 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
+            "bg-hotel-800 text-white hover:bg-hotel-900 luxury-shadow",
+          )}
+          aria-label="Dashboard"
+        >
+          <LayoutDashboard size={24} />
+        </Link>
+      )}
     </header>
   );
 };

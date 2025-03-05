@@ -13,7 +13,8 @@ import {
   LogOut, 
   Mail, 
   Bell,
-  CreditCard
+  CreditCard,
+  Home
 } from "lucide-react";
 import { format } from "date-fns";
 
@@ -73,6 +74,11 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="flex space-x-2">
+            <Link to="/">
+              <Button size="sm" variant="outline" className="flex items-center gap-1">
+                <Home size={16} /> Home
+              </Button>
+            </Link>
             <Button size="sm" variant="outline" className="flex items-center gap-1">
               <Bell size={16} /> Notifications
             </Button>
