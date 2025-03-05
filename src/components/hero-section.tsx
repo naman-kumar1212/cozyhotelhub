@@ -145,8 +145,43 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* Global Search Bar - Repositioned to be more visible */}
-      <div className="absolute bottom-52 md:bottom-48 left-0 right-0 z-30 mx-auto w-full max-w-2xl px-4">
+      {/* Arrow navigation */}
+      <button
+        className="absolute left-4 top-1/2 z-30 -translate-y-1/2 bg-black/20 backdrop-blur-sm hover:bg-black/40 p-2 rounded-full text-white/90 hover:text-white transition-all duration-300"
+        onClick={prevSlide}
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      
+      <button
+        className="absolute right-4 top-1/2 z-30 -translate-y-1/2 bg-black/20 backdrop-blur-sm hover:bg-black/40 p-2 rounded-full text-white/90 hover:text-white transition-all duration-300"
+        onClick={nextSlide}
+        aria-label="Next slide"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Navigation indicators - Positioned between slideshow and search bar */}
+      <div className="absolute bottom-36 left-0 right-0 z-30 flex justify-center space-x-3">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            className={cn(
+              "w-3 h-3 rounded-full transition-all duration-300",
+              index === currentSlide ? "bg-white scale-100" : "bg-white/50 scale-75 hover:scale-90 hover:bg-white/70"
+            )}
+            onClick={() => {
+              setIsAnimating(true);
+              setCurrentSlide(index);
+            }}
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+
+      {/* Global Search Bar - Positioned between slideshow content and booking form */}
+      <div className="absolute bottom-28 left-0 right-0 z-30 mx-auto w-full max-w-2xl px-4">
         <div className="bg-black/30 backdrop-blur-md rounded-full overflow-hidden border border-white/20 shadow-lg transition-all duration-300 hover:bg-black/40">
           <div className="flex items-center">
             <Search className="ml-6 text-white/90" size={20} />
@@ -165,42 +200,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Navigation indicators - Adjusted position */}
-      <div className="absolute bottom-44 md:bottom-40 left-0 right-0 z-30 flex justify-center space-x-3">
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            className={cn(
-              "w-3 h-3 rounded-full transition-all duration-300",
-              index === currentSlide ? "bg-white scale-100" : "bg-white/50 scale-75 hover:scale-90 hover:bg-white/70"
-            )}
-            onClick={() => {
-              setIsAnimating(true);
-              setCurrentSlide(index);
-            }}
-            aria-label={`Go to slide ${index + 1}`}
-          ></button>
-        ))}
-      </div>
-
-      {/* Arrow navigation */}
-      <button
-        className="absolute left-4 top-1/2 z-30 -translate-y-1/2 bg-black/20 backdrop-blur-sm hover:bg-black/40 p-2 rounded-full text-white/90 hover:text-white transition-all duration-300"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-      >
-        <ChevronLeft size={24} />
-      </button>
-      
-      <button
-        className="absolute right-4 top-1/2 z-30 -translate-y-1/2 bg-black/20 backdrop-blur-sm hover:bg-black/40 p-2 rounded-full text-white/90 hover:text-white transition-all duration-300"
-        onClick={nextSlide}
-        aria-label="Next slide"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Booking Form - Adjusted position */}
+      {/* Booking Form */}
       <div className="absolute bottom-6 left-0 right-0 z-30 mx-auto w-full max-w-6xl px-4 md:px-6">
         <div className="glass-morphism p-6 md:p-10 rounded-xl shadow-lg border-t-4 border-t-hotel-800">
           <div className="mb-6">
