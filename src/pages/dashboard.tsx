@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/context/auth-context";
@@ -17,6 +16,7 @@ import {
   Home
 } from "lucide-react";
 import { format } from "date-fns";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -102,12 +102,18 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center space-x-4 mb-4">
-                <div className="h-16 w-16 rounded-full bg-gray-200 flex items-center justify-center">
-                  <User size={32} className="text-gray-500" />
-                </div>
+                <Avatar className="h-16 w-16">
+                  <AvatarImage src={user.avatarUrl} alt={user.name} />
+                  <AvatarFallback>
+                    <User size={32} className="text-gray-500" />
+                  </AvatarFallback>
+                </Avatar>
                 <div>
                   <h3 className="font-medium">{user.name}</h3>
                   <p className="text-sm text-gray-500">{user.email}</p>
+                  {user.address && (
+                    <p className="text-sm text-gray-500">{user.address}</p>
+                  )}
                   <span className="inline-block px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full mt-1">
                     {user.role === 'admin' ? 'Administrator' : 'Guest'}
                   </span>

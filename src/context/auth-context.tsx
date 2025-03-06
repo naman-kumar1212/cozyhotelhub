@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
@@ -7,7 +6,16 @@ interface User {
   name: string;
   email: string;
   role: 'guest' | 'admin';
+  address?: string;
+  avatarUrl?: string;
   reservations?: any[];
+}
+
+interface UpdateUserData {
+  name: string;
+  email: string;
+  address: string;
+  avatarUrl?: string;
 }
 
 interface AuthContextType {
@@ -17,6 +25,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   register: (name: string, email: string, password: string) => Promise<boolean>;
+  updateUser: (data: UpdateUserData) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -26,7 +35,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check for saved user in localStorage
     const savedUser = localStorage.getItem('hotelUser');
     if (savedUser) {
       try {
@@ -42,14 +50,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       setIsLoading(true);
-      // Mock API call - replace with actual API call in production
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Check if credentials exist in localStorage
       const savedCredentials = localStorage.getItem('userCredentials');
       let credentials = savedCredentials ? JSON.parse(savedCredentials) : {};
       
-      // Demo login logic - replace with actual authentication
       if (email === 'demo@example.com' && password === 'password') {
         const user = {
           id: '1',
@@ -75,7 +80,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         toast.success('Admin login successful!');
         return true;
       } else if (credentials[email] && credentials[email].password === password) {
-        // User exists in our saved credentials
         const user = {
           id: credentials[email].id,
           name: credentials[email].name,
@@ -109,10 +113,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const register = async (name: string, email: string, password: string): Promise<boolean> => {
     try {
       setIsLoading(true);
-      // Mock API call - replace with actual API call in production
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Check if the email already exists in our credentials store
       const savedCredentials = localStorage.getItem('userCredentials');
       let credentials = savedCredentials ? JSON.parse(savedCredentials) : {};
       
@@ -121,10 +123,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return false;
       }
       
-      // Generate a unique ID for the new user
       const userId = Math.random().toString(36).substr(2, 9);
       
-      // Save the user credentials
       credentials[email] = {
         id: userId,
         name: name,
@@ -133,7 +133,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       localStorage.setItem('userCredentials', JSON.stringify(credentials));
       
-      // Create the user object and log them in
       const user = {
         id: userId,
         name,
@@ -155,13 +154,26 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const updateUser = async (data: UpdateUserData): Promise<void> => {
+    if (!user) throw new Error("No user logged in");
+    
+    const updatedUser = {
+      ...user,
+      ...data
+    };
+    
+    setUser(updatedUser);
+    localStorage.setItem('hotelUser', JSON.stringify(updatedUser));
+  };
+
   const value = {
     user,
     isAuthenticated: !!user,
     isLoading,
     login,
     logout,
-    register
+    register,
+    updateUser
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
