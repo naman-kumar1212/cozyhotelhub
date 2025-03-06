@@ -8,6 +8,7 @@ import { Crown, User, Settings, Calendar, BedDouble, LogOut, Mail, Bell, CreditC
 import { format } from "date-fns";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const {
@@ -132,15 +133,16 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Profile Card */}
               <Card className="overflow-hidden border-none shadow-lg">
-                <div className="bg-gradient-to-r from-hotel-200 to-hotel-300 h-24"></div>
-                <CardContent className="pt-0 relative">
-                  <Avatar className="h-20 w-20 border-4 border-white absolute -top-10 shadow-md">
-                    <AvatarImage src={user.avatarUrl} alt={user.name} className="move it to the above div\n" />
+                <div className="bg-gradient-to-r from-hotel-200 to-hotel-300 h-24 relative">
+                  <Avatar className="h-20 w-20 border-4 border-white absolute -bottom-10 left-6 shadow-md">
+                    <AvatarImage src={user.avatarUrl} alt={user.name} />
                     <AvatarFallback className="bg-hotel-500 text-white">
                       {user.name ? user.name.charAt(0).toUpperCase() : <User size={32} />}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="mt-12">
+                </div>
+                <CardContent className="pt-14 mt-0">
+                  <div>
                     <h3 className="font-bold text-xl">{user.name}</h3>
                     <p className="text-gray-500">{user.email}</p>
                     {user.address && <p className="text-gray-500 text-sm mt-1">{user.address}</p>}
