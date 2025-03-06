@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Calendar, Users, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const EventsPage = () => {
   const events = [
@@ -143,7 +144,9 @@ const EventsPage = () => {
                       </div>
                     </div>
                     
-                    <Button variant="outline" className="w-full mt-2">Request Information</Button>
+                    <Link to="/event-information">
+                      <Button variant="outline" className="w-full mt-2">Request Information</Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -176,7 +179,9 @@ const EventsPage = () => {
                         <span>{event.location}</span>
                       </div>
                       <p className="text-sm text-muted-foreground">{event.description}</p>
-                      <Button size="sm" className="w-full mt-2">Reserve a Spot</Button>
+                      <Link to="/event-information">
+                        <Button size="sm" className="w-full mt-2">Reserve a Spot</Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>

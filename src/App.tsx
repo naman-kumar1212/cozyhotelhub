@@ -13,8 +13,11 @@ import LoginPage from "./pages/login-page";
 import Dashboard from "./pages/dashboard";
 import ProfilePage from "./pages/profile"; // Added the ProfilePage import
 import RoomsPage from "./pages/rooms";
+import RoomDetailsPage from "./pages/room-details";
+import BookingPage from "./pages/booking";
 import DiningPage from "./pages/dining";
 import EventsPage from "./pages/events";
+import EventInformationPage from "./pages/event-information";
 import ServicesPage from "./pages/services";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
@@ -34,8 +37,11 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/rooms" element={<RoomsPage />} />
+            <Route path="/rooms/:id" element={<RoomDetailsPage />} />
+            <Route path="/booking/:id" element={<BookingPage />} />
             <Route path="/dining" element={<DiningPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/event-information" element={<EventInformationPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

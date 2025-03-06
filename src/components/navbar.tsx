@@ -148,7 +148,7 @@ const Navbar = () => {
       </div>
       
       {/* Dashboard Quick Access Icon for all pages */}
-      {isAuthenticated && !['/dashboard', '/'].includes(location.pathname) && (
+      {isAuthenticated && (
         <Link
           to="/dashboard"
           className={cn(
@@ -156,6 +156,7 @@ const Navbar = () => {
             "bg-hotel-800 text-white hover:bg-hotel-900 luxury-shadow",
           )}
           aria-label="Dashboard"
+          style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)" }}
         >
           <Home size={24} />
         </Link>
