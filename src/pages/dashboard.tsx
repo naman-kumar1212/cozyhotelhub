@@ -1,60 +1,37 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/context/auth-context";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Crown, 
-  User, 
-  Settings, 
-  Calendar, 
-  BedDouble, 
-  LogOut, 
-  Mail, 
-  Bell,
-  CreditCard,
-  Home,
-  Clock,
-  Coffee,
-  Hotel,
-  Activity,
-  ChevronRight,
-  Utensils,
-  Car,
-  Sparkles
-} from "lucide-react";
+import { Crown, User, Settings, Calendar, BedDouble, LogOut, Mail, Bell, CreditCard, Home, Clock, Coffee, Hotel, Activity, ChevronRight, Utensils, Car, Sparkles } from "lucide-react";
 import { format } from "date-fns";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
-
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const {
+    user,
+    logout
+  } = useAuth();
   const [currentTime, setCurrentTime] = useState(new Date());
-
   useEffect(() => {
     if (!user) {
       navigate("/login");
     }
-
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 60000); // Update every minute
 
     return () => clearInterval(timer);
   }, [user, navigate]);
-
   const handleLogout = () => {
     logout();
     navigate("/");
   };
-
   if (!user) {
     return <p>Redirecting to login...</p>;
   }
-
   const greeting = () => {
     const hour = currentTime.getHours();
     if (hour < 12) {
@@ -65,9 +42,7 @@ const Dashboard = () => {
       return "Good evening";
     }
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 pt-24 pb-12 px-4 md:px-8">
+  return <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 pt-24 pb-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header section with gradient background */}
         <div className="bg-gradient-to-r from-hotel-500 to-hotel-600 rounded-2xl p-6 mb-8 text-white shadow-lg">
@@ -160,7 +135,7 @@ const Dashboard = () => {
                 <div className="bg-gradient-to-r from-hotel-200 to-hotel-300 h-24"></div>
                 <CardContent className="pt-0 relative">
                   <Avatar className="h-20 w-20 border-4 border-white absolute -top-10 shadow-md">
-                    <AvatarImage src={user.avatarUrl} alt={user.name} />
+                    <AvatarImage src={user.avatarUrl} alt={user.name} className="move it to the above div\n" />
                     <AvatarFallback className="bg-hotel-500 text-white">
                       {user.name ? user.name.charAt(0).toUpperCase() : <User size={32} />}
                     </AvatarFallback>
@@ -168,16 +143,9 @@ const Dashboard = () => {
                   <div className="mt-12">
                     <h3 className="font-bold text-xl">{user.name}</h3>
                     <p className="text-gray-500">{user.email}</p>
-                    {user.address && (
-                      <p className="text-gray-500 text-sm mt-1">{user.address}</p>
-                    )}
+                    {user.address && <p className="text-gray-500 text-sm mt-1">{user.address}</p>}
                     <div className="flex items-center gap-2 mt-2">
-                      <span className={cn(
-                        "inline-block px-3 py-1 rounded-full text-xs font-medium",
-                        user.role === 'admin' 
-                          ? "bg-amber-100 text-amber-800" 
-                          : "bg-hotel-100 text-hotel-800"
-                      )}>
+                      <span className={cn("inline-block px-3 py-1 rounded-full text-xs font-medium", user.role === 'admin' ? "bg-amber-100 text-amber-800" : "bg-hotel-100 text-hotel-800")}>
                         {user.role === 'admin' ? 'Administrator' : 'Guest'}
                       </span>
                       <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
@@ -203,13 +171,10 @@ const Dashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
-                  {user.reservations && user.reservations.length > 0 ? (
-                    <div>
+                  {user.reservations && user.reservations.length > 0 ? <div>
                       {/* Show reservations here */}
                       <p>Your upcoming reservations would appear here.</p>
-                    </div>
-                  ) : (
-                    <div className="text-center py-10">
+                    </div> : <div className="text-center py-10">
                       <div className="bg-hotel-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <BedDouble size={30} className="text-hotel-400" />
                       </div>
@@ -218,8 +183,7 @@ const Dashboard = () => {
                       <Link to="/rooms">
                         <Button size="sm" className="bg-hotel-600 hover:bg-hotel-700">Book a Room</Button>
                       </Link>
-                    </div>
-                  )}
+                    </div>}
                 </CardContent>
               </Card>
 
@@ -305,8 +269,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Admin Section - Only shown to admins */}
-            {user.role === 'admin' && (
-              <Card className="mt-6 border-2 border-amber-200 shadow-lg">
+            {user.role === 'admin' && <Card className="mt-6 border-2 border-amber-200 shadow-lg">
                 <CardHeader className="pb-2 bg-gradient-to-r from-amber-50 to-amber-100">
                   <CardTitle className="flex items-center gap-2 text-lg text-amber-800">
                     <Crown size={18} /> Admin Controls
@@ -324,8 +287,7 @@ const Dashboard = () => {
                     <Settings size={16} className="text-amber-600" /> <span>System Settings</span>
                   </Button>
                 </CardContent>
-              </Card>
-            )}
+              </Card>}
           </TabsContent>
 
           <TabsContent value="stays">
@@ -405,8 +367,6 @@ const Dashboard = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Dashboard;
