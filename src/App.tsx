@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/login-page";
 import Dashboard from "./pages/dashboard";
+import ProfilePage from "./pages/profile"; // Added the ProfilePage import
 import RoomsPage from "./pages/rooms";
 import DiningPage from "./pages/dining";
 import EventsPage from "./pages/events";

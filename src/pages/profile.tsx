@@ -54,7 +54,13 @@ const ProfilePage = () => {
 
   const onSubmit = async (data: z.infer<typeof profileSchema>) => {
     try {
-      await updateUser({ ...data, avatarUrl });
+      // Fix: Ensure all required fields are passed to updateUser
+      await updateUser({
+        name: data.name, // Make sure name is explicitly provided
+        email: data.email, // Make sure email is explicitly provided
+        address: data.address, // Make sure address is explicitly provided
+        avatarUrl // Optional field
+      });
       toast.success("Profile updated successfully");
       navigate("/dashboard");
     } catch (error) {
