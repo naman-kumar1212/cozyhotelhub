@@ -90,24 +90,24 @@ const RoomCard: React.FC<RoomCardProps> = ({
         </div>
         
         <div className="flex space-x-3">
-          <ButtonTransition 
-            variant="outline" 
-            size="sm" 
-            className="flex-1 border-hotel-200 text-hotel-800 hover:bg-hotel-50"
-          >
-            <Link to={`/rooms/${id}`} className="w-full">
+          <Link to={`/rooms/${id}`} className="flex-1">
+            <ButtonTransition 
+              variant="outline" 
+              size="sm" 
+              className="w-full border-hotel-200 text-hotel-800 hover:bg-hotel-50"
+            >
               View Details
-            </Link>
-          </ButtonTransition>
+            </ButtonTransition>
+          </Link>
           
-          <ButtonTransition 
-            size="sm" 
-            className="flex-1 luxury-button"
-          >
-            <Link to={`/booking/${id}`} className="w-full">
+          <Link to={`/booking/${id}`} className="flex-1">
+            <ButtonTransition 
+              size="sm" 
+              className="w-full luxury-button"
+            >
               Book Now
-            </Link>
-          </ButtonTransition>
+            </ButtonTransition>
+          </Link>
         </div>
       </div>
     </div>
