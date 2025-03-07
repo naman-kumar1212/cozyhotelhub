@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 40 30% 97%;
-    --foreground: 35 20% 15%;
+    --background: 40 45% 97%;
+    --foreground: 25 100% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 35 20% 15%;
+    --card-foreground: 25 100% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 35 20% 15%;
+    --popover-foreground: 25 100% 16%;
 
-    --primary: 32 40% 75%;
-    --primary-foreground: 35 20% 15%;
+    --primary: 43 79% 78%;
+    --primary-foreground: 25 100% 16%;
 
-    --secondary: 35 20% 93%;
-    --secondary-foreground: 35 20% 15%;
+    --secondary: 30 60% 92%;
+    --secondary-foreground: 25 100% 16%;
 
-    --muted: 35 20% 95%;
-    --muted-foreground: 35 20% 40%;
+    --muted: 30 30% 95%;
+    --muted-foreground: 25 40% 30%;
 
-    --accent: 32 40% 75%;
-    --accent-foreground: 35 20% 15%;
+    --accent: 43 79% 78%;
+    --accent-foreground: 25 100% 16%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 35 20% 98%;
+    --destructive-foreground: 30 60% 98%;
 
-    --border: 35 20% 90%;
-    --input: 35 20% 90%;
-    --ring: 32 40% 70%;
+    --border: 30 30% 90%;
+    --input: 30 30% 90%;
+    --ring: 43 79% 70%;
 
     --radius: 0.5rem;
   }
@@ -51,19 +51,19 @@
   }
   
   .luxury-shadow {
-    @apply shadow-[0_10px_40px_-10px_rgba(191,162,114,0.3)];
+    @apply shadow-[0_10px_40px_-10px_rgba(239,207,160,0.3)];
   }
   
   .luxury-card {
-    @apply border border-hotel-200 bg-white rounded-lg overflow-hidden luxury-shadow hover:shadow-[0_15px_50px_-12px_rgba(191,162,114,0.4)] transition-all duration-500;
+    @apply border border-hotel-200 bg-white rounded-lg overflow-hidden luxury-shadow hover:shadow-[0_15px_50px_-12px_rgba(239,207,160,0.4)] transition-all duration-500;
   }
   
   .luxury-button {
-    @apply bg-gradient-to-r from-hotel-400 to-hotel-500 hover:from-hotel-500 hover:to-hotel-600 text-white transition-all duration-300;
+    @apply bg-gradient-to-r from-orange-700 to-orange-800 hover:from-orange-800 hover:to-orange-900 text-white transition-all duration-300;
   }
   
   .luxury-border {
-    @apply border-b-2 border-hotel-300;
+    @apply border-b-2 border-hotel-500;
   }
 }
 

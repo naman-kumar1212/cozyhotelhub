@@ -76,7 +76,7 @@ const Navbar = () => {
                     ? "text-hotel-800 hover:text-hotel-950" 
                     : "text-white hover:text-hotel-100",
                   location.pathname === link.path && (
-                    (isScrolled || isDarkTextPage || forceGlassMorphism) ? "text-hotel-950 font-semibold" : "text-white font-semibold"
+                    (isScrolled || isDarkTextPage || forceGlassMorphism) ? "text-hotel-800 font-semibold" : "text-white font-semibold"
                   ),
                   "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
                   location.pathname === link.path && "after:scale-x-100 after:origin-bottom-left"
@@ -162,7 +162,7 @@ const Navbar = () => {
           to="/dashboard"
           className={cn(
             "fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
-            "bg-hotel-800 text-white hover:bg-hotel-900 luxury-shadow",
+            "bg-orange-800 text-white hover:bg-orange-900 luxury-shadow",
           )}
           aria-label="Dashboard"
           style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)" }}
