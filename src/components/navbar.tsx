@@ -48,8 +48,8 @@ const Navbar = () => {
     closeMenu();
   }, [location.pathname]);
 
-  // Force glass effect on room details pages
-  const forceGlassMorphism = isRoomDetailsPage;
+  // Force glass effect on certain pages
+  const forceGlassMorphism = isRoomDetailsPage || location.pathname === '/rooms';
 
   return (
     <>
@@ -61,7 +61,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Logo textClassName={cn(
-            isScrolled || forceGlassMorphism ? "text-foreground" : isDarkTextPage ? "text-foreground" : "text-white"
+            isScrolled || forceGlassMorphism ? "text-[#532200]" : isDarkTextPage ? "text-[#532200]" : "text-white"
           )} />
           
           {/* Desktop Navigation */}
@@ -73,10 +73,10 @@ const Navbar = () => {
                 className={cn(
                   "relative font-medium text-sm whitespace-nowrap transition-colors duration-200",
                   (isScrolled || isDarkTextPage || forceGlassMorphism) 
-                    ? "text-hotel-800 hover:text-hotel-950" 
-                    : "text-white hover:text-hotel-100",
+                    ? "text-[#532200] hover:text-[#914110]" 
+                    : "text-white hover:text-[#EFCFA0]",
                   location.pathname === link.path && (
-                    (isScrolled || isDarkTextPage || forceGlassMorphism) ? "text-hotel-800 font-semibold" : "text-white font-semibold"
+                    (isScrolled || isDarkTextPage || forceGlassMorphism) ? "text-[#914110] font-semibold" : "text-white font-semibold"
                   ),
                   "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
                   location.pathname === link.path && "after:scale-x-100 after:origin-bottom-left"
@@ -103,7 +103,7 @@ const Navbar = () => {
           <button
             className={cn(
               "md:hidden p-2 focus:outline-none",
-              isScrolled || isDarkTextPage || forceGlassMorphism ? "text-hotel-800" : "text-white"
+              isScrolled || isDarkTextPage || forceGlassMorphism ? "text-[#532200]" : "text-white"
             )}
             onClick={toggleMenu}
             aria-label="Toggle menu"
@@ -123,8 +123,8 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-hotel-800 text-lg font-medium py-2 border-b border-muted transition-colors hover:text-hotel-950",
-                  location.pathname === link.path && "text-hotel-950 font-semibold"
+                  "text-[#532200] text-lg font-medium py-2 border-b border-muted transition-colors hover:text-[#914110]",
+                  location.pathname === link.path && "text-[#914110] font-semibold"
                 )}
                 onClick={closeMenu}
               >
@@ -136,7 +136,7 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/dashboard" 
-                  className="text-hotel-800 text-lg font-medium py-2 border-b border-muted transition-colors hover:text-hotel-950 flex items-center"
+                  className="text-[#532200] text-lg font-medium py-2 border-b border-muted transition-colors hover:text-[#914110] flex items-center"
                   onClick={closeMenu}
                 >
                   <Home size={18} className="mr-2" /> Dashboard
@@ -162,7 +162,7 @@ const Navbar = () => {
           to="/dashboard"
           className={cn(
             "fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
-            "bg-orange-800 text-white hover:bg-orange-900 luxury-shadow",
+            "bg-[#914110] text-white hover:bg-[#532200] luxury-shadow",
           )}
           aria-label="Dashboard"
           style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)" }}
